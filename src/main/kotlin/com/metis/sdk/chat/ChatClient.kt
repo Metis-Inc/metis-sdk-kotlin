@@ -3,11 +3,13 @@ package com.metis.sdk.chat
 import com.metis.sdk.common.models.Message
 import com.metis.sdk.http.HttpClient
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okio.IOException
 import java.util.concurrent.TimeUnit
@@ -216,8 +218,7 @@ class ChatClient(private val httpClient: HttpClient) {
      * @return A flow of chat stream chunks
      */
     fun streamMessage(sessionId: String, message: Message): Flow<ChatStreamChunk> {
-        val request = SendMessageRequest(message)
-        val requestJson = moshi.adapter(SendMessageRequest::class.java).toJson(request)
+        val requestJson = moshi.adapter(SendMessageRequest::class.java).toJson(SendMessageRequest(message))
 
         return flow {
             // Create a new OkHttpClient with a longer timeout for streaming

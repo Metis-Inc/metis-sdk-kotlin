@@ -41,8 +41,7 @@ class WrapperClient(private val httpClient: HttpClient) {
      * @return A flow of chat completion chunks
      */
     fun streamChatCompletions(provider: String, request: ChatCompletionRequest): Flow<String> {
-        val requestWithStream = request.copy(stream = true)
-        val requestJson = moshi.adapter(ChatCompletionRequest::class.java).toJson(requestWithStream)
+        val requestJson = moshi.adapter(ChatCompletionRequest::class.java).toJson(request.copy(stream = true))
 
         return flow {
             // Create a new OkHttpClient with a longer timeout for streaming
@@ -55,13 +54,13 @@ class WrapperClient(private val httpClient: HttpClient) {
             val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
             val requestBody = requestJson.toRequestBody(mediaType)
 
-            val request = Request.Builder()
+            val requestWithStream = Request.Builder()
                 .url("${httpClient.config.baseUrl}/api/v1/chat/$provider/completions")
                 .addHeader("Authorization", "Bearer ${httpClient.config.apiKey}")
                 .post(requestBody)
                 .build()
 
-            val response = client.newCall(request).execute()
+            val response = client.newCall(requestWithStream).execute()
             if (!response.isSuccessful) {
                 throw IOException("Unexpected code $response")
             }
