@@ -32,10 +32,9 @@ dependencies {
 
     // Testing
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.25")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.25")
     testImplementation("org.mockito:mockito-core:5.0.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
 }
 
 java {
