@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Metis-Inc:metis-sdk-kotlin:1.0.0'
+    implementation 'com.github.Metis-Inc:metis-sdk-kotlin:main-SNAPSHOT'
 }
 ```
 
@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Metis-Inc:metis-sdk-kotlin:1.0.0")
+    implementation("com.github.Metis-Inc:metis-sdk-kotlin:main-SNAPSHOT")
 }
 ```
 
