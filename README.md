@@ -51,6 +51,7 @@ dependencies {
 
 ## Quick Start
 
+#### Kotlin
 ```kotlin
 // Initialize the SDK
 val metis = MetisClient.create("your-api-key")
@@ -85,6 +86,43 @@ val response = metis.chat.sendMessage(
 
 // Print the bot's response
 println(response.message.content)
+```
+
+#### Java
+```java
+// Initialize the SDK
+MetisClient metis = MetisClient.Companion.create("your-api-key");
+
+// Create a bot
+ProviderConfig providerConfig = new ProviderConfig(
+    new Provider("openai_chat_completion", "gpt-4o")
+);
+
+BotCreationRequest botRequest = new BotCreationRequest(
+    "My Assistant",
+    "You are a helpful assistant.",
+    providerConfig
+);
+
+Bot bot = metis.getBot().create(botRequest);
+
+// Create a chat session
+ChatUser user = new ChatUser("user123", "John Doe");
+ChatSession session = metis.getChat().createSession(bot.getId(), user);
+
+// Send a message
+Message message = new Message(
+    MessageType.USER,
+    "Hello, how are you?"
+);
+
+ChatResponse response = metis.getChat().sendMessage(
+    session.getId(),
+    message
+);
+
+// Print the bot's response
+System.out.println(response.getMessage().getContent());
 ```
 
 ## Documentation
