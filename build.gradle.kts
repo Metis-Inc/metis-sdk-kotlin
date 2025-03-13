@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.github.Metis-Inc"
-version = "1.0.0"
+version = "main-SNAPSHOT"
 
 repositories {
     mavenCentral()
