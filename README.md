@@ -44,7 +44,7 @@ dependencies {
     <dependency>
         <groupId>com.github.Metis-Inc</groupId>
         <artifactId>metis-sdk-kotlin</artifactId>
-        <version>1.0.0</version>
+        <version>main-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
