@@ -22,14 +22,14 @@ try {
 }
 ```
 
-### MetisAuthenticationException
+### MetisAuthException
 
 Thrown when there are authentication issues, such as invalid API keys or expired tokens.
 
 ```kotlin
 try {
     val user = metis.auth.getUser()
-} catch (e: MetisAuthenticationException) {
+} catch (e: MetisAuthException) {
     println("Authentication Error: ${e.message}")
     // Handle by re-authenticating or prompting for credentials
 }
@@ -108,7 +108,7 @@ fun createBot(name: String, instructions: String): BotOutputModel? {
     } catch (e: MetisValidationException) {
         println("Invalid input: ${e.message}")
         // Prompt user to correct input
-    } catch (e: MetisAuthenticationException) {
+    } catch (e: MetisAuthException) {
         println("Authentication failed: ${e.message}")
         // Redirect to login
     } catch (e: MetisRateLimitException) {
@@ -182,7 +182,7 @@ try {
 ### Invalid API Key
 
 ```
-MetisAuthenticationException: Invalid API key provided
+MetisAuthException: Invalid API key provided
 ```
 
 Solution: Check that you're using the correct API key and that it hasn't been revoked.

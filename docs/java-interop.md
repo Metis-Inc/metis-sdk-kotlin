@@ -176,7 +176,7 @@ try {
 } catch (MetisApiException e) {
     System.err.println("API Error: " + e.getMessage());
     System.err.println("Status Code: " + e.getStatusCode());
-} catch (MetisAuthenticationException e) {
+} catch (MetisAuthException e) {
     System.err.println("Authentication Error: " + e.getMessage());
 } catch (Exception e) {
     System.err.println("Unexpected Error: " + e.getMessage());
@@ -244,7 +244,7 @@ public class CompleteJavaExample {
         } catch (MetisApiException e) {
             System.err.println("API Error: " + e.getMessage());
             System.err.println("Status Code: " + e.getStatusCode());
-        } catch (MetisAuthenticationException e) {
+        } catch (MetisAuthException e) {
             System.err.println("Authentication Error: " + e.getMessage());
         } catch (Exception e) {
             System.err.println("Unexpected Error: " + e.getMessage());
