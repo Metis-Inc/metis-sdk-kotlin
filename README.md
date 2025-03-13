@@ -72,7 +72,7 @@ val bot = metis.bot.create(
         name = "My Assistant",
         instructions = "You are a helpful assistant.",
         providerConfig = ProviderConfig(
-            provider = Provider(name = "openai", model = "gpt-4")
+            provider = Provider(name = "openai_chat_completion", model = "gpt-4o")
         )
     )
 )
@@ -81,7 +81,7 @@ val bot = metis.bot.create(
 ```java
 // Java
 ProviderConfig providerConfig = new ProviderConfig(
-    new Provider("openai", "gpt-4", false, false),
+    new Provider("openai_chat_completion", "gpt-4o", false, false),
     0.7,
     null,
     null,
